@@ -1,0 +1,478 @@
+/* =========================
+   QuickConvert — style.css
+   (Atualizado com temas por imagem)
+   ========================= */
+
+:root {
+  --qc-bg: #ffffff;
+  --qc-text: #0f172a;
+  --qc-muted: #64748b;
+  --qc-card: #ffffff;
+  --qc-border: #e5e7eb;
+  --qc-soft: #f8fafc;
+  --qc-drop: #f3f4f6;
+  --qc-drop-hover: #eaf2ff;
+  --qc-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+  /* Fundo por imagem (base) */
+  --qc-bg-image: none;
+  --qc-bg-overlay: rgba(248, 250, 252, 0.88);
+
+  /* Cores de destaque (base) */
+  --qc-accent: #2563eb;
+  --qc-accent-soft: #7dd3fc;
+  --qc-danger: #f43f5e;
+}
+
+main,
+.container {
+  background: transparent !important;
+}
+
+body {
+  color: var(--qc-text);
+
+  /* Fundo com imagem + overlay (para manter legibilidade) */
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(0,0,0,0.10), rgba(0,0,0,0.22)),
+    linear-gradient(var(--qc-bg-overlay), var(--qc-bg-overlay)),
+    var(--qc-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.qc-header {
+  background: transparent;
+  backdrop-filter: blur(8px);
+}
+
+.qc-card {
+  border: 1px solid var(--qc-border);
+  box-shadow: var(--qc-shadow);
+  border-radius: 16px;
+}
+
+.qc-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: #111827;
+  color: #fff;
+  font-size: 20px;
+}
+
+.qc-dropzone {
+  border: 2px dashed var(--qc-border);
+  background: var(--qc-drop);
+  border-radius: 16px;
+  padding: 22px;
+  cursor: pointer;
+  transition: 180ms ease;
+  outline: none;
+}
+
+.qc-dropzone:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+
+.qc-dropzone.dragover {
+  border-color: var(--qc-accent);
+  background: var(--qc-drop-hover);
+}
+
+.qc-dropzone-inner {
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.qc-drop-icon {
+  font-size: 36px;
+  color: var(--qc-accent);
+}
+
+.qc-mono {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.qc-pill {
+  border: 1px solid var(--qc-border);
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qc-empty {
+  border: 1px dashed var(--qc-border);
+  border-radius: 16px;
+  background: #fff;
+  padding: 26px;
+}
+
+.qc-empty-inner {
+  text-align: center;
+  display: grid;
+  gap: 6px;
+}
+
+.qc-empty-icon {
+  font-size: 38px;
+  color: var(--qc-muted);
+}
+
+.qc-filelist {
+  display: grid;
+  gap: 12px;
+}
+
+.qc-fileitem {
+  border: 1px solid var(--qc-border);
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.qc-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--qc-border);
+  background: #f1f5f9;
+  display: grid;
+  place-items: center;
+}
+
+.qc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.qc-filemeta {
+  min-width: 0;
+}
+
+.qc-filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qc-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qc-heart {
+  color: #ef4444;
+}
+
+@media (max-width: 576px) {
+  .qc-fileitem {
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+  }
+
+  .qc-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .qc-thumb {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* ===========
+   Dark mode
+   =========== */
+
+body.qc-dark {
+  --qc-bg: #0b1220;
+  --qc-text: #e5e7eb;
+  --qc-muted: #94a3b8;
+  --qc-card: #0b1220;
+  --qc-border: #1f2937;
+  --qc-soft: #060a14;
+  --qc-drop: #0b1220;
+  --qc-drop-hover: #0e1a33;
+  --qc-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+
+  /* Overlay padrão do modo escuro (legibilidade) */
+  --qc-bg-overlay: rgba(2, 6, 23, 0.72);
+}
+
+body.qc-dark .qc-logo {
+  background: #111827;
+}
+
+body.qc-dark .qc-pill,
+body.qc-dark .qc-empty,
+body.qc-dark .qc-fileitem,
+body.qc-dark .qc-card {
+  background: #0b1220;
+  color: var(--qc-text);
+}
+
+body.qc-dark .text-secondary,
+body.qc-dark .form-text {
+  color: var(--qc-muted) !important;
+}
+
+body.qc-dark .btn-outline-secondary,
+body.qc-dark .btn-outline-dark,
+body.qc-dark .btn-outline-primary,
+body.qc-dark .btn-outline-danger,
+body.qc-dark .btn-outline-success {
+  color: var(--qc-text);
+  border-color: var(--qc-border);
+}
+
+/* =========================================
+   Tema Branco (Imagem + Paleta)
+   ========================================= */
+body.qc-theme-white {
+  --qc-bg-image: url("../img/Tema-Branco.webp");
+  --qc-bg-overlay: rgba(245, 247, 251, 0.68);
+
+  --qc-text: #0f172a;
+  --qc-muted: #475569;
+
+  --qc-card: rgba(255, 255, 255, 0.82);
+  --qc-border: #e2e8f0;
+
+  --qc-accent: #2563eb;
+  --qc-accent-soft: #7dd3fc;
+  --qc-danger: #f43f5e;
+}
+
+/* =========================================
+   Tema Preto (Imagem + Paleta)
+   ========================================= */
+body.qc-theme-black {
+  --qc-bg-image: url("../img/Tema-Preto.webp");
+  --qc-bg-overlay: rgba(2, 6, 23, 0.72);
+
+  --qc-text: #e5e7eb;
+  --qc-muted: #94a3b8;
+
+  --qc-card: rgba(15, 23, 42, 0.88);
+  --qc-border: #1e293b;
+
+  --qc-accent: #22d3ee;
+  --qc-accent-soft: #38bdf8;
+  --qc-danger: #fb7185;
+}
+
+/* =========================================
+   Botões / Ícones seguindo o tema
+   ========================================= */
+
+/* Primário */
+.btn-primary {
+  background-color: var(--qc-accent) !important;
+  border-color: var(--qc-accent) !important;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Outline primário */
+.btn-outline-primary {
+  color: var(--qc-accent) !important;
+  border-color: var(--qc-accent) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--qc-accent) !important;
+  color: #fff !important;
+}
+
+/* Ícones e destaques */
+.text-primary,
+.qc-drop-icon {
+  color: var(--qc-accent) !important;
+}
+
+/* Logo no mesmo “tom” do tema */
+.qc-logo {
+  background-color: var(--qc-accent) !important;
+}
+
+/* Cards translúcidos com blur (fica premium com fundo imagem) */
+.qc-card,
+.qc-fileitem,
+.qc-empty,
+.qc-pill {
+  background: var(--qc-card) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Ajuste de textos auxiliares */
+.text-secondary,
+.form-text {
+  color: var(--qc-muted) !important;
+}
+
+/* =========================
+   Range (Qualidade) — contraste melhor
+   ========================= */
+
+/* Track (linha) */
+#qualityRange {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.12);
+}
+
+/* Chrome/Edge/Safari */
+#qualityRange::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.16);
+}
+
+#qualityRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--qc-accent);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  margin-top: -6px; /* alinha thumb no track */
+}
+
+/* Firefox */
+#qualityRange::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.16);
+}
+
+#qualityRange::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--qc-accent);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* Tema escuro: track um pouco mais claro */
+body.qc-dark #qualityRange::-webkit-slider-runnable-track {
+  background: rgba(226, 232, 240, 0.22);
+}
+body.qc-dark #qualityRange::-moz-range-track {
+  background: rgba(226, 232, 240, 0.22);
+}
+
+/* =========================
+   Mobile — Ajuste seção "3) Arquivos"
+   ========================= */
+@media (max-width: 991.98px) {
+  /* Card "Arquivos" deixa de ter altura forçada */
+  .qc-files-card {
+    height: auto !important;
+  }
+
+  /* Respiro melhor no mobile */
+  .qc-files-card .card-body {
+    padding: 16px !important;
+  }
+
+  /* Título + contadores quebram melhor */
+  .qc-files-card .d-flex.flex-column.flex-md-row {
+    gap: 10px !important;
+  }
+
+  /* Pílulas (Selecionados/Convertidos) ocupam melhor a largura */
+  .qc-files-card .qc-pill {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Estado vazio não fica “gigante” */
+  .qc-files-card .qc-empty {
+    padding: 18px !important;
+  }
+
+  /* Lista não “estoura” a tela: vira área com scroll */
+  .qc-files-card #fileList {
+    max-height: 52vh;
+    overflow: auto;
+    padding-right: 6px;
+  }
+}
+
+/* Ajuste extra para telas bem pequenas */
+@media (max-width: 576px) {
+  .qc-files-card #fileList {
+    max-height: 46vh;
+  }
+}
+
+/* FIX: evita bug de repaint (blur + background) ao redimensionar */
+@media (max-width: 991.98px) {
+  .qc-card,
+  .qc-fileitem,
+  .qc-empty,
+  .qc-pill {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Mantém aparência “premium” mesmo sem blur */
+  .qc-card,
+  .qc-empty,
+  .qc-pill,
+  .qc-fileitem {
+    background: rgba(255, 255, 255, 0.92) !important;
+  }
+
+  body.qc-dark .qc-card,
+  body.qc-dark .qc-empty,
+  body.qc-dark .qc-pill,
+  body.qc-dark .qc-fileitem {
+    background: rgba(11, 18, 32, 0.92) !important;
+  }
+}
+
+/* =========================
+   Alert — botão fechar (X) no canto direito
+   ========================= */
+.alert {
+  position: relative;
+  padding-right: 3rem; /* espaço pro botão X */
+}
+
+.alert .btn-close {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.alert .btn-close:hover {
+  opacity: 1;
+}
